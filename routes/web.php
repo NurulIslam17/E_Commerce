@@ -4,10 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeComtroller;
 use App\Http\Controllers\AdminController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -20,3 +16,4 @@ Route::middleware([
 
 
 Route::get("/redirect",[HomeComtroller::class,"redirect"]);
+Route::get("/",[HomeComtroller::class,"index"]);
