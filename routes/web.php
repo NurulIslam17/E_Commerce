@@ -24,3 +24,14 @@ Route::get("/addUser",[AdminController::class,"addUser"]);
 
 //View Users
 Route::get("/viewUser",[AdminController::class,"viewUsers"]);
+
+// addProduct
+Route::get("/addProduct",[AdminController::class,"addProduct"]);
+//uploadProduct
+Route::post("/uploadProduct",[AdminController::class,"uploadProduct"]);
+//viewProduct
+Route::get("/viewProduct",[AdminController::class,"viewProduct"]);
+//edit
+Route::get("/edit/{id}",[AdminController::class,"edit"]);
+//delete
+Route::get("/delete/{id}",[AdminController::class,"deleteProduct"]);

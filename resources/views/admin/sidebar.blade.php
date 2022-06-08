@@ -30,6 +30,14 @@
           </a>
         </li>
         <li class="nav-item menu-items">
+          <a class="nav-link" href="{{url('/viewProduct')}}">
+            <span class="menu-icon">
+              <i class="mdi mdi-table-large"></i>
+            </span>
+            <span class="menu-title text-white">View Products</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
           <a class="nav-link" href="pages/charts/chartjs.html">
             <span class="menu-icon">
               <i class="mdi mdi-chart-bar"></i>
@@ -47,4 +55,4 @@
         </li>
 
       </ul>
-    <
+    </nav>
