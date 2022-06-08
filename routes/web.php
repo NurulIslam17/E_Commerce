@@ -17,3 +17,10 @@ Route::middleware([
 
 Route::get("/redirect",[HomeComtroller::class,"redirect"]);
 Route::get("/",[HomeComtroller::class,"index"]);
+
+//add user
+Route::get("/addUser",[AdminController::class,"addUser"]);
+//Upload user
+
+//View Users
+Route::get("/viewUser",[AdminController::class,"viewUsers"]);
