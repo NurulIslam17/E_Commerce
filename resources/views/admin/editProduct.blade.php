@@ -6,11 +6,10 @@
   @include('admin.header')
   <style>
     .mainDiv{
-      background-image: linear-gradient(to right bottom, #330df0, #0075ff, #00a7ff, #00cfff, #27f2e7);
-
+      background-image: linear-gradient(to right bottom, #3c45e8, #0074fc, #0097ff, #00b5fa, #6ed0f2);
     }
     .product{
-      background-image: linear-gradient(to right bottom, #29f4f3, #00c0ed, #0089e0, #0050bf, #0a0583);
+      background-image: linear-gradient(to left bottom, #3c45e8, #0074fc, #0097ff, #00b5fa, #6ed0f2);
       width: 600px;
       padding: 10px;
       margin-top: 10px;
@@ -67,27 +66,27 @@
             <div class="product">
               <h1>Edit Product Information</h1>
 
-              <form action="{{url('/updateProduct',{{}})}}" method="post" enctype="multipart/form-data">
+              <form action="{{url('/updateProduct',$edit->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="inputDiv">
                   <label>Product Name</label>
-                  <input type="text" name="name" placeholder="Product Name" />
+                  <input type="text" name="name" value="{{$edit->pName}}"/>
                 </div>
                 <div class="inputDiv">
                   <label>Price</label>
-                  <input type="number" name="price" placeholder="Product Price" />
+                  <input type="number" name="price" value="{{$edit->pPrice}}" />
                 </div>
                 <div class="inputDiv">
                   <label>Quantity</label>
-                  <input type="number" name="quantity" placeholder="Product Quantity" />
+                  <input type="number" name="quantity" value="{{$edit->pQuantity}}" />
                 </div>
                 <div class="inputDiv">
                   <label>Description</label>
-                  <input type="text" name="description" placeholder="Product Description" />
+                  <input type="text" name="description" value="{{$edit->pDesc}}"/>
                 </div>
                 <div class="inputDiv">
                   <label>Old Image</label>
-                  <img src="" class="oldImg">
+                  <img src="ProductImage/{{$edit->pImg}}" class="oldImg">
                 </div>
 
                 <div class="inputDiv">

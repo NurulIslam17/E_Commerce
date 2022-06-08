@@ -38,20 +38,42 @@ class AdminController extends Controller
         return redirect('/viewProduct');
     }
 
-    public function viewProduct(){
+    public function viewProduct()
+    {
         $data = Prodct::all();
-        return view('admin.viewProduct',compact("data"));
+        return view('admin.viewProduct', compact("data"));
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $edit = Prodct::find($id);
-        return view('admin.editProduct',compact("edit"));
+        return view('admin.editProduct', compact("edit"));
+    }
+
+    public function updateProduct(Request $request, $id)
+    {
+        $update = Prodct::find($id);
+
+        $update->pName = $request->name;
+        $update->pPrice = $request->price;
+        $update->pQuantity = $request->quantity;
+        $update->pDesc = $request->description;
+
+        $img = $request->image;
+        $imgName = time() . '.' . $img->getClientOriginalExtension();
+        $img->move("ProductImage", $imgName);
+        $update->pImg = $imgName;
+
+        $update->save();
+        return redirect('/viewProduct');
+
 
     }
 
-    public function deleteProduct($id){
-            $del = Prodct::find($id);
-            $del ->delete();
-            return redirect()->back();
+    public function deleteProduct($id)
+    {
+        $del = Prodct::find($id);
+        $del->delete();
+        return redirect()->back();
     }
 }
