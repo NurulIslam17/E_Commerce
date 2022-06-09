@@ -2,19 +2,21 @@
 <html lang="en">
 
 <head>
-  <base href="/public"/>
+  <base href="/public" />
   @include('admin.header')
   <style>
-    .mainDiv{
+    .mainDiv {
       background-image: linear-gradient(to right bottom, #3c45e8, #0074fc, #0097ff, #00b5fa, #6ed0f2);
     }
-    .product{
+
+    .product {
       background-image: linear-gradient(to left bottom, #3c45e8, #0074fc, #0097ff, #00b5fa, #6ed0f2);
       width: 600px;
       padding: 10px;
       margin-top: 10px;
     }
-    .product h1{
+
+    .product h1 {
       font-size: 30px;
       color: #000;
       font-weight: bold;
@@ -22,7 +24,8 @@
       padding-bottom: 10px;
 
     }
-    label{
+
+    label {
       display: inline-block;
       width: 200px;
       text-align: center;
@@ -30,13 +33,16 @@
       font-weight: bold;
       color: #000;
     }
-    .inputDiv{
+
+    .inputDiv {
       margin-bottom: 13px;
     }
-    .inputDiv input{
+
+    .inputDiv input {
       color: #000;
     }
-    .inputDiv .btn{
+
+    .inputDiv .btn {
       color: #000;
       font-size: 19px;
       font-weight: bold;
@@ -44,7 +50,8 @@
       margin: 10px;
       padding: 10px;
     }
-    .oldImg{
+
+    .oldImg {
       width: 100px;
       height: 100px;
     }
@@ -70,7 +77,7 @@
                 @csrf
                 <div class="inputDiv">
                   <label>Product Name</label>
-                  <input type="text" name="name" value="{{$edit->pName}}"/>
+                  <input type="text" name="name" value="{{$edit->pName}}" />
                 </div>
                 <div class="inputDiv">
                   <label>Price</label>
@@ -82,7 +89,7 @@
                 </div>
                 <div class="inputDiv">
                   <label>Description</label>
-                  <input type="text" name="description" value="{{$edit->pDesc}}"/>
+                  <input type="text" name="description" value="{{$edit->pDesc}}" />
                 </div>
                 <div class="inputDiv">
                   <label>Old Image</label>
@@ -91,7 +98,7 @@
 
                 <div class="inputDiv">
                   <label>Image</label>
-                  <input type="file" name="image"/>
+                  <input type="file" name="image" />
                 </div>
                 <div class="inputDiv">
                   <input class="btn" type="submit" value="Update Product" />

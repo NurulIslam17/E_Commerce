@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prodct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -15,7 +16,8 @@ class HomeComtroller extends Controller
         if ($usertype == '1') {
             return view('admin.home');
         } else {
-            return view('user.home');
+            $data = Prodct::paginate(3);
+            return view('user.home',compact("data"));
         }
     }
 
@@ -24,7 +26,8 @@ class HomeComtroller extends Controller
         if (Auth::id()) {
             return redirect('redirect');
         } else {
-            return view('user.home');
+            $data = Prodct::paginate(3);
+            return view('user.home',compact("data"));
         }
     }
 }

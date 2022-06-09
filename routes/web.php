@@ -15,25 +15,28 @@ Route::middleware([
 });
 
 
-Route::get("/redirect",[HomeComtroller::class,"redirect"]);
-Route::get("/",[HomeComtroller::class,"index"]);
+Route::get("/redirect", [HomeComtroller::class, "redirect"]);
+Route::get("/", [HomeComtroller::class, "index"]);
 
 //add user
-Route::get("/addUser",[AdminController::class,"addUser"]);
+Route::get("/addUser", [AdminController::class, "addUser"]);
 //Upload user
 
 //View Users
-Route::get("/viewUser",[AdminController::class,"viewUsers"]);
+Route::get("/viewUser", [AdminController::class, "viewUsers"]);
 
-// addProduct
-Route::get("/addProduct",[AdminController::class,"addProduct"]);
+//..................................................... addProduct
+
+Route::get("/addProduct", [AdminController::class, "addProduct"]);
 //uploadProduct
-Route::post("/uploadProduct",[AdminController::class,"uploadProduct"]);
+Route::post("/uploadProduct", [AdminController::class, "uploadProduct"]);
 //viewProduct
-Route::get("/viewProduct",[AdminController::class,"viewProduct"]);
+Route::get("/viewProduct", [AdminController::class, "viewProduct"]);
 //edit
-Route::get("/edit/{id}",[AdminController::class,"edit"]);
+Route::get("/edit/{id}", [AdminController::class, "edit"]);
 //updateProduct
-Route::post("/updateProduct/{id}",[AdminController::class,"updateProduct"]);
+Route::post("/updateProduct/{id}", [AdminController::class, "updateProduct"]);
 //delete
-Route::get("/delete/{id}",[AdminController::class,"deleteProduct"]);
+Route::get("/delete/{id}", [AdminController::class, "deleteProduct"]);
+
+// ...........................

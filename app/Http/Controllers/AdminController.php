@@ -20,6 +20,9 @@ class AdminController extends Controller
         return view('admin.addProduct');
     }
 
+
+    // **************************** Product ********************************
+
     public function uploadProduct(Request $request)
     {
         $product = new Prodct();
@@ -66,8 +69,6 @@ class AdminController extends Controller
 
         $update->save();
         return redirect('/viewProduct');
-
-
     }
 
     public function deleteProduct($id)
@@ -76,4 +77,6 @@ class AdminController extends Controller
         $del->delete();
         return redirect()->back();
     }
+
+    //************************************************************************* */
 }
