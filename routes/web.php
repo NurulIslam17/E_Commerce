@@ -39,4 +39,7 @@ Route::post("/updateProduct/{id}", [AdminController::class, "updateProduct"]);
 //delete
 Route::get("/delete/{id}", [AdminController::class, "deleteProduct"]);
 
+//serch Product
+Route::get("/search",[HomeComtroller::class,"searchProduct"]);
+
 // ...........................

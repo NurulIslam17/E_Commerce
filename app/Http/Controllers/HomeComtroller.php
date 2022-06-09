@@ -17,7 +17,7 @@ class HomeComtroller extends Controller
             return view('admin.home');
         } else {
             $data = Prodct::paginate(3);
-            return view('user.home',compact("data"));
+            return view('user.home', compact("data"));
         }
     }
 
@@ -27,7 +27,18 @@ class HomeComtroller extends Controller
             return redirect('redirect');
         } else {
             $data = Prodct::paginate(3);
-            return view('user.home',compact("data"));
+            return view('user.home', compact("data"));
         }
+    }
+
+    public function searchProduct(Request $request)
+    {
+        $search = $request->search;
+        if ($search == '') {
+            $data = Prodct::paginate(3);
+            return view('user.home', compact("data"));
+        }
+        $data = Prodct::where('pName', 'Like', '%' . $search . '%')->get();
+        return view('user.home', compact("data"));
     }
 }
