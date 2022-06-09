@@ -7,7 +7,7 @@
           <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
           <div style=" display:inline-block; float:right; padding:10px">
             <form action="{{url('/search')}}" method="get">
-              <input type="search" name="search" placeholder="Search the Product">
+              <input type="search" class="p-1" name="search" placeholder="Search the Product">
               <input type="submit" value="Search" class="btn btn-success ml-1" style="background-color:#f33f3f; border:none">
             </form>
           </div>
@@ -35,7 +35,11 @@
             <span>Reviews (3)</span>
           </div>
           <div class="text-center pb-2">
-          <a href="#" class="btn btn-primary text-center">Add Cart</a>
+            <form action="{{url('/addCart',$x->id)}}" method="post">
+              @csrf
+              <input type="number" name="cartQuantity" style="width: 25%; text-align:center; padding:5px;" value="1" min="1" />
+              <input type="submit" value="Add Cart" class="btn" style="background-color: blue; color:#FFF;" />
+            </form>
           </div>
         </div>
       </div>

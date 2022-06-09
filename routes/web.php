@@ -42,4 +42,8 @@ Route::get("/delete/{id}", [AdminController::class, "deleteProduct"]);
 //serch Product
 Route::get("/search",[HomeComtroller::class,"searchProduct"]);
 
+//addCart
+
+Route::post("/addCart/{id}",[HomeComtroller::class,"addCart"]);
+
 // ...........................
