@@ -18,7 +18,9 @@ class HomeComtroller extends Controller
             return view('admin.home');
         } else {
             $data = Prodct::paginate(3);
-            return view('user.home', compact("data"));
+            $user = auth()->user();
+            $count = Cart::where('phone',$user->phone)->count();
+            return view('user.home', compact("data","count"));
         }
     }
 
