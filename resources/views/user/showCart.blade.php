@@ -27,6 +27,43 @@ https://templatemo.com/tm-546-sixteen-clothing
   <link rel="stylesheet" href="assets/css/fontawesome.css">
   <link rel="stylesheet" href="assets/css/templatemo-sixteen.css">
   <link rel="stylesheet" href="assets/css/owl.css">
+  <style>
+    .mainDiv {
+      padding-top: 100px;
+      padding-bottom: 30px;
+      width: 30%;
+      align: center;
+      background-color: blue;
+    }
+
+    table {
+      width: 95%;
+      background-color: #fff;
+    }
+
+    th {
+      background-color: grey;
+      padding: 5px;
+      font-size: 20px;
+      color: #FFF;
+    }
+
+    td {
+      padding: 5px;
+      font-size: 17px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid #000;
+    }
+
+    tr:nth-child(even) {
+      background-color: #c2ede8;
+    }
+  </style>
+
 
 </head>
 
@@ -73,7 +110,7 @@ https://templatemo.com/tm-546-sixteen-clothing
               @auth
             <li class="nav-item">
               <a class="nav-link" href="{{url('/viewCartProduct')}}">
-              <i class="fa-solid fa-cart-shopping fa-lg"></i>
+                <i class="fa-solid fa-cart-shopping fa-lg"></i>
                 Cart[{{$count}}]</a>
             </li>
 
@@ -97,6 +134,29 @@ https://templatemo.com/tm-546-sixteen-clothing
       </div>
     </nav>
   </header>
+
+  <!-- Table  -->
+  <center>
+
+    <div class="mainDiv">
+      <table>
+        <tr>
+          <th>Product name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+        @foreach($cart as $x)
+        <tr>
+          <td>{{$x->p_title}}</td>
+          <td>{{$x->quantity}}</td>
+          <td>{{$x->price}}৳</td>
+          <td>{{$x->price * $x->quantity}}৳</td>
+        </tr>
+        @endforeach
+      </table>
+    </div>
+  </center>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
