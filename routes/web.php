@@ -47,3 +47,6 @@ Route::get("/search",[HomeComtroller::class,"searchProduct"]);
 Route::post("/addCart/{id}",[HomeComtroller::class,"addCart"]);
 
 // ...........................
+
+//viewCartProduct
+Route::get("/viewCartProduct",[HomeComtroller::class,"viewCartProduct"]);

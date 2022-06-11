@@ -8,7 +8,7 @@
         <li class="nav-item menu-items">
           <a class="nav-link" href="{{url('/addUser')}}">
             <span class="menu-icon">
-              <i class="mdi mdi-speedometer"></i>
+            <i class="fa-solid fa-user-plus"></i>
             </span>
             <span class="menu-title text-white">Add User</span>
           </a>
@@ -16,7 +16,7 @@
         <li class="nav-item menu-items">
           <a class="nav-link" href="{{url('viewUser')}}">
             <span class="menu-icon">
-              <i class="mdi mdi-playlist-play"></i>
+            <i class="fa-solid fa-users"></i>
             </span>
             <span class="menu-title text-white">View Users</span>
           </a>
@@ -24,7 +24,7 @@
         <li class="nav-item menu-items">
           <a class="nav-link" href="{{url('/addProduct')}}">
             <span class="menu-icon">
-              <i class="mdi mdi-table-large"></i>
+            <i class="fa-solid fa-cart-plus"></i>
             </span>
             <span class="menu-title text-white">Add Products</span>
           </a>
@@ -32,7 +32,7 @@
         <li class="nav-item menu-items">
           <a class="nav-link" href="{{url('/viewProduct')}}">
             <span class="menu-icon">
-              <i class="mdi mdi-table-large"></i>
+            <i class="fa-solid fa-basket-shopping"></i>
             </span>
             <span class="menu-title text-white">View Products</span>
           </a>

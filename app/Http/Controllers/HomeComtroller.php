@@ -69,4 +69,13 @@ class HomeComtroller extends Controller
         $cartQ = $request->cartQuantity;
 
     }
+
+    //viewCartProduct
+
+    public function viewCartProduct()
+    {
+        $user = auth()->user();
+        $count = Cart::where('phone',$user->phone)->count();
+        return view('user.showCart',compact("count"));
+    }
 }
