@@ -149,6 +149,13 @@ https://templatemo.com/tm-546-sixteen-clothing
       </div>
       @endif
 
+      @if(session()->has('orderMsg'))
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert"> X </button>
+        {{session()->get('orderMsg')}}
+      </div>
+      @endif
+
       <table>
         <tr>
           <th>Product name</th>
@@ -157,6 +164,7 @@ https://templatemo.com/tm-546-sixteen-clothing
           <th>Total</th>
           <th>Total</th>
         </tr>
+
         <form action="{{url('/order')}}" method="post">
           @csrf
           @foreach($cart as $x)
@@ -181,12 +189,14 @@ https://templatemo.com/tm-546-sixteen-clothing
             </td>
           </tr>
           @endforeach
-          <div>
-            <a class="btn btn-success" href="">Order</a>
-          </div>
-        </form>
       </table>
+      <div>
+        <button class="btn btn-success" href="">Order</button>
+      </div>
+      </form>
     </div>
+
+
 
 
   </center>

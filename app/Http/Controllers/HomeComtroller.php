@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Prodct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 class HomeComtroller extends Controller
@@ -104,8 +105,10 @@ class HomeComtroller extends Controller
             $order->product = $request->productName[$key];
             $order->quantity = $request->quantity[$key];
             $order->price = $request->price[$key];
+            $order->status = 'Not Delivered';
             $order->save();
         }
-        return redirect('user.home');
+        DB::table('carts')->where('phone',$phone)->delete();
+        return redirect()->back()->with('orderMsg','You ordered is successfull');
     }
 }
