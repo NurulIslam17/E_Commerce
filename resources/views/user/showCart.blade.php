@@ -134,16 +134,23 @@ https://templatemo.com/tm-546-sixteen-clothing
       </div>
     </nav>
   </header>
-
   <!-- Table  -->
   <center>
 
     <div class="mainDiv">
+    @if(session()->has('msg'))
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">X</button>
+      {{session()->get('msg')}}
+    </div>
+    @endif
+
       <table>
         <tr>
           <th>Product name</th>
           <th>Quantity</th>
           <th>Price</th>
+          <th>Total</th>
           <th>Total</th>
         </tr>
         @foreach($cart as $x)
@@ -152,6 +159,9 @@ https://templatemo.com/tm-546-sixteen-clothing
           <td>{{$x->quantity}}</td>
           <td>{{$x->price}}৳</td>
           <td>{{$x->price * $x->quantity}}৳</td>
+          <td>
+            <a class="btn btn-danger" href="{{url('/deleteProductCart',$x->id)}}">Delete</a>
+          </td>
         </tr>
         @endforeach
       </table>
