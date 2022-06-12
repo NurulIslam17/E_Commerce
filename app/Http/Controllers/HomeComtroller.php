@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Prodct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,8 +20,8 @@ class HomeComtroller extends Controller
         } else {
             $data = Prodct::paginate(3);
             $user = auth()->user();
-            $count = Cart::where('phone',$user->phone)->count();
-            return view('user.home', compact("data","count"));
+            $count = Cart::where('phone', $user->phone)->count();
+            return view('user.home', compact("data", "count"));
         }
     }
 
@@ -47,13 +48,14 @@ class HomeComtroller extends Controller
 
     //addCart
 
-    public function addCart(Request $request,$id){
+    public function addCart(Request $request, $id)
+    {
 
-        if(Auth::id()){
+        if (Auth::id()) {
             $user = auth()->user();
             $cart = new Cart();
             $product = Prodct::find($id);
-            
+
             $cart->name = $user->name;
             $cart->phone = $user->phone;
             $cart->address = $user->address;
@@ -62,12 +64,10 @@ class HomeComtroller extends Controller
             $cart->quantity = $request->cartQuantity;
             $cart->save();
             return redirect()->back();
-        }
-        else{
+        } else {
             return redirect('login');
         }
         $cartQ = $request->cartQuantity;
-
     }
 
     //viewCartProduct
@@ -75,15 +75,37 @@ class HomeComtroller extends Controller
     public function viewCartProduct()
     {
         $user = auth()->user();
-        $cart = Cart::where('phone',$user->phone)->get();
-        $count = Cart::where('phone',$user->phone)->count();
-        return view('user.showCart',compact("count","cart"));
+        $cart = Cart::where('phone', $user->phone)->get();
+        $count = Cart::where('phone', $user->phone)->count();
+        return view('user.showCart', compact("count", "cart"));
     }
     //deleteProductCart
     public function deleteProductCart($id)
     {
         $del = Cart::find($id);
         $del->delete();
-        return redirect()->back()->with('msg','Product remove from cart successfully');
+        return redirect()->back()->with('msg', 'Product remove from cart successfully');
+    }
+
+    //order
+    public function order(Request $request)
+    {
+        $user = auth()->user();
+        $name = $user->name;
+        $phone = $user->phone;
+        $address = $user->address;
+
+        foreach ($request->productName as $key=>$productName) 
+        {
+            $order = new Order();
+            $order->name =$name;
+            $order->phone =$phone;
+            $order->address =$address;
+            $order->product = $request->productName[$key];
+            $order->quantity = $request->quantity[$key];
+            $order->price = $request->price[$key];
+            $order->save();
+        }
+        return redirect('user.home');
     }
 }

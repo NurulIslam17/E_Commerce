@@ -62,6 +62,10 @@ https://templatemo.com/tm-546-sixteen-clothing
     tr:nth-child(even) {
       background-color: #c2ede8;
     }
+
+    body {
+      background-color: blue;
+    }
   </style>
 
 
@@ -138,12 +142,12 @@ https://templatemo.com/tm-546-sixteen-clothing
   <center>
 
     <div class="mainDiv">
-    @if(session()->has('msg'))
-    <div class="alert alert-success">
-      <button type="button" class="close" data-dismiss="alert">X</button>
-      {{session()->get('msg')}}
-    </div>
-    @endif
+      @if(session()->has('msg'))
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">X</button>
+        {{session()->get('msg')}}
+      </div>
+      @endif
 
       <table>
         <tr>
@@ -153,20 +157,41 @@ https://templatemo.com/tm-546-sixteen-clothing
           <th>Total</th>
           <th>Total</th>
         </tr>
-        @foreach($cart as $x)
-        <tr>
-          <td>{{$x->p_title}}</td>
-          <td>{{$x->quantity}}</td>
-          <td>{{$x->price}}৳</td>
-          <td>{{$x->price * $x->quantity}}৳</td>
-          <td>
-            <a class="btn btn-danger" href="{{url('/deleteProductCart',$x->id)}}">Delete</a>
-          </td>
-        </tr>
-        @endforeach
+        <form action="{{url('/order')}}" method="post">
+          @csrf
+          @foreach($cart as $x)
+          <tr>
+            <td>
+              <input type="text" name="productName[]" value="{{$x->p_title}}" hidden>
+              {{$x->p_title}}
+            </td>
+            <td>
+              <input type="number" name="quantity[]" value="{{$x->quantity}}" hidden>
+              {{$x->quantity}}
+            </td>
+            <td>
+              <input type="number" name="price[]" value="{{$x->price}}" hidden>
+              {{$x->price}}৳
+            </td>
+            <td>
+              {{$x->price * $x->quantity}}৳
+            </td>
+            <td>
+              <a class="btn btn-danger" href="{{url('/deleteProductCart',$x->id)}}">Delete</a>
+            </td>
+          </tr>
+          @endforeach
+          <div>
+            <a class="btn btn-success" href="">Order</a>
+          </div>
+        </form>
       </table>
     </div>
+
+
   </center>
+
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
