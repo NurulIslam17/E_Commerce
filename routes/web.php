@@ -61,3 +61,4 @@ Route::get("/showOrder", [AdminController::class, "showOrder"]);
 //updated status
 
 Route::get("/delivered/{id}",[AdminController::class,"delivered"]);
+

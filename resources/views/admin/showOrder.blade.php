@@ -63,9 +63,16 @@
           <center>
             <div class="tableDiv">
               @if(session()->has('statusUp'))
-              <div class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert">X</button>
+              <div class="alert alert-success w-25">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"> X </button>
                 {{session()->get('statusUp')}}
+              </div>
+              @endif
+
+              @if(session()->has('del'))
+              <div class="alert alert-success w-25">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"> X </button>
+                {{session()->get('del')}}
               </div>
               @endif
               <table>

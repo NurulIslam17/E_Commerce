@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\Prodct;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function addUser()
-    {
-        return view('admin.addUser');
-    }
     public function viewUsers()
     {
-        return view('admin.viewUsers');
+        $data = DB::table('users')->where('usertype',0)->get();
+        return view('admin.user',compact("data"));
     }
     public function addProduct()
     {
@@ -96,4 +95,5 @@ class AdminController extends Controller
         return redirect()->back()->with('statusUp','Order is delivered');
 
     }
+
 }

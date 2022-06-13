@@ -5,20 +5,12 @@
       </div>
       
       <ul class="nav">
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="{{url('/addUser')}}">
-            <span class="menu-icon">
-            <i class="fa-solid fa-user-plus"></i>
-            </span>
-            <span class="menu-title text-white">Add User</span>
-          </a>
-        </li>
-        <li class="nav-item menu-items">
+        <li class="nav-item menu-items mt-1">
           <a class="nav-link" href="{{url('viewUser')}}">
             <span class="menu-icon">
             <i class="fa-solid fa-users"></i>
             </span>
-            <span class="menu-title text-white">View Users</span>
+            <span class="menu-title text-white"> Users</span>
           </a>
         </li>
         <li class="nav-item menu-items">
@@ -34,7 +26,7 @@
             <span class="menu-icon">
             <i class="fa-solid fa-basket-shopping"></i>
             </span>
-            <span class="menu-title text-white">View Products</span>
+            <span class="menu-title text-white">Products</span>
           </a>
         </li>
         <li class="nav-item menu-items">
