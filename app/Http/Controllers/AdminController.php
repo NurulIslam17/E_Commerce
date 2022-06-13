@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Prodct;
 use Illuminate\Http\Request;
 
@@ -79,4 +80,20 @@ class AdminController extends Controller
     }
 
     //************************************************************************* */
+    //showOrder
+    public function showOrder(){
+        $data = Order::all();
+        return view('admin.showOrder',compact("data"));
+    }
+
+    // delivered
+
+    public function delivered($id)
+    {
+        $upStatus = Order::find($id);
+        $upStatus->status = "Delivered";
+        $upStatus->save();
+        return redirect()->back()->with('statusUp','Order is delivered');
+
+    }
 }

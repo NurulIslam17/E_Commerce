@@ -40,17 +40,24 @@ Route::post("/updateProduct/{id}", [AdminController::class, "updateProduct"]);
 Route::get("/delete/{id}", [AdminController::class, "deleteProduct"]);
 
 //serch Product
-Route::get("/search",[HomeComtroller::class,"searchProduct"]);
+Route::get("/search", [HomeComtroller::class, "searchProduct"]);
 
 //addCart
 
-Route::post("/addCart/{id}",[HomeComtroller::class,"addCart"]);
+Route::post("/addCart/{id}", [HomeComtroller::class, "addCart"]);
 
 // ...........................
 
 //viewCartProduct
-Route::get("/viewCartProduct",[HomeComtroller::class,"viewCartProduct"]);
+Route::get("/viewCartProduct", [HomeComtroller::class, "viewCartProduct"]);
 //deleteProductCart
-Route::get("/deleteProductCart/{id}",[HomeComtroller::class,"deleteProductCart"]);
+Route::get("/deleteProductCart/{id}", [HomeComtroller::class, "deleteProductCart"]);
 //order
-Route::post("/order",[HomeComtroller::class,'order']);
+Route::post("/order", [HomeComtroller::class, 'order']);
+
+
+//showOrder
+Route::get("/showOrder", [AdminController::class, "showOrder"]);
+//updated status
+
+Route::get("/delivered/{id}",[AdminController::class,"delivered"]);
